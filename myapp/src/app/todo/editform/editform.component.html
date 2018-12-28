@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col">
+    <form>
+      <div class="form-group">
+        <label for="task">Task</label>
+        <input type="text"
+          class="form-control"
+          id="task"
+          aria-describedby="emailHelp"
+          name="name"
+          [value]="toDoService.tasks[id].name" #name>
+      </div> 
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select id="category"
+          class="form-control"
+          name="category"
+          value="{{toDoService.tasks[id].category}}" #category>
+          <!-- <option value="CDACPUNE">CDACPUNE</option>
+          <option value="CDACMUMBAI">CDACMUMBAI</option>
+          <option value="CDACHYDERABAD">CDACHYDERABAD</option>
+          <option value="CDACNOIDA">CDACNOIDA</option> -->
+          <option *ngFor="let cat of cname">{{cat.category}}</option>
+          </select>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox"
+          class="form-check-input"
+          name="status"
+          [checked]="toDoService.tasks[id].status" #status>
+        <label class="form-check-label" for="status">Completed</label>
+      </div>
+      <button class="btn btn-warning mr-1">Clear</button>
+      <button class="btn btn-primary" (click)="onSubmitClicked(name,category,status)">Submit</button>
+    </form>
+  </div>
+</div>
